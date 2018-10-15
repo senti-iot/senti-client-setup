@@ -24,7 +24,7 @@ if [ ! -e "$GIT" ]; then
 	echo
     echo "git is not installed."
 	echo "Installing git ..."
-	sudo apt install git-all
+	sudo apt install git-all > /dev/null
 	git --version
 else 
     echo "git is already installed"
@@ -36,7 +36,7 @@ if [ ! -e "$NODE" ]; then
     echo "nodejs is not installed."
 	echo "Installing nodejs & npm ..."
 	echo
-	sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash && sudo apt-get install -y nodejs && sudo apt-get install build-essential
+	sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash && sudo apt-get install -y nodejs && sudo apt-get install build-essential > /dev/null
 	echo
 	node -v
 	npm -v
@@ -47,12 +47,12 @@ else
 	npm -v
 fi
 
-MQTT=/usr/local/bin/mqtt
+MQTT=/usr/local/lib/node_modules/mqtt/mqtt.js
 if [ ! -e "$MQTT" ]; then
 	echo
     echo "MQTT is not installed."
 	echo "Installing MQTT ..."
-	sudo npm install mqtt -g
+	sudo npm install mqtt -g > /dev/null
 	mqtt version
 else 
     echo "MQTT is already installed"
@@ -65,20 +65,19 @@ sudo mkdir -p /srv/nodejs/senti
 echo 
 echo Fetching latest versions of Senti software from GitHub
 cd /srv/nodejs/senti
-sudo git -C senti-mqtt-client pull || git clone https://github.com/senti-platform/senti-mqtt-client.git
-sudo git -C senti-watchman pull || git clone https://github.com/senti-platform/senti-watchman.git
+sudo git -C senti-mqtt-client pull || git clone https://github.com/senti-platform/senti-mqtt-client.git > /dev/null
+sudo git -C senti-watchman pull || git clone https://github.com/senti-platform/senti-watchman.git > /dev/null
 echo 
 
 echo Installing modules and/or upgrades
 echo
 cd /srv/nodejs/senti/senti-mqtt-client
-sudo npm install
+sudo npm install > /dev/null
 echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
 cd /srv/nodejs/senti/senti-watchman
-sudo npm install
+sudo npm install > /dev/null
 echo
 echo
 echo Starting senti-mqtt-client service ...
 echo
-
