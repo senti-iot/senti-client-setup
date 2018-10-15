@@ -23,7 +23,7 @@ if [ ! -e "$GIT" ]; then
 	echo git version && git --version
 else 
     echo "git is already installed"
-	echo git version && git --version
+	git --version
 fi 
 
 NODE=/usr/local/bin/node
@@ -44,7 +44,7 @@ else
 fi
 
 sudo npm install mqtt@latest -g
-echo mqtt version && mqtt version
+mqtt version
 
 sudo npm install nodemon@latest -g 
 echo nodemon version && nodemon -v
@@ -62,12 +62,21 @@ echo
 echo Installing modules and/or upgrades
 echo
 cd /srv/nodejs/senti/senti-mqtt-client > /dev/null
+echo
+echo Installing senti-mqtt-client  ...
 sudo npm install
 echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
 cd /srv/nodejs/senti/senti-watchman > /dev/null
+echo
+echo Installing senti-watchman  ...
 sudo npm install
 echo
 echo
+echo
+echo
+echo
+echo
 echo Starting senti-mqtt-client service ...
+echo
 echo
