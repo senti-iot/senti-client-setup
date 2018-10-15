@@ -20,10 +20,13 @@ if [ ! -e "$GIT" ]; then
     echo "git is not installed."
 	echo "Installing git ..."
 	sudo apt install git-all > /dev/null
-	echo git version && git --version
+	echo
+	git --version
 else 
     echo "git is already installed"
+	echo
 	git --version
+	echo
 fi 
 
 NODE=/usr/local/bin/node
@@ -41,6 +44,7 @@ else
 	echo
 	echo node version && node -v
 	echo npm version && npm -v
+	echo
 fi
 
 sudo npm install mqtt@latest -g
