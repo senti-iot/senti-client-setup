@@ -1,6 +1,6 @@
 #!/bin/bash
-# sudo wget -O - https://github.com/senti-platform/senti-client-setup/blob/master/setup | -E bash
-# sudo curl -sL https://github.com/senti-platform/senti-client-setup/blob/master/setup | sudo -E bash
+# sudo wget -O - https://raw.githubusercontent.com/senti-platform/senti-client-setup/master/setup | sudo -E bash
+# sudo curl -sL https://raw.githubusercontent.com/senti-platform/senti-client-setup/master/setup | sudo -E bash
 
 clear
 
@@ -21,27 +21,43 @@ echo Checking if needed software is installed ...
 
 GIT=/usr/bin/git
 if [ ! -e "$GIT" ]; then
-    echo "GIT is not installed."
-	echo "Installing GIT"
+	echo
+    echo "git is not installed."
+	echo "Installing git ..."
 	sudo apt install git-all
 	git --version
 else 
-    echo "GIT is already installed"
+    echo "git is already installed"
 fi 
 
 NODE=/usr/local/bin/node
 if [ ! -e "$NODE" ]; then
-    echo "NODEJS is not installed."
-	echo "Installing NODEJS"
+	echo
+    echo "nodejs is not installed."
+	echo "Installing nodejs & npm ..."
+	echo
 	sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash && sudo apt-get install -y nodejs && sudo apt-get install build-essential
+	echo
 	node -v
 	npm -v
 else 
-    echo "NODE is already installed"
+    echo "nodejs is already installed"
+	echo
+	node -v
+	npm -v
 fi
 
-echo Installing MQTT
-sudo npm install mqtt -g
+MQTT=/usr/local/bin/mqtt
+if [ ! -e "$MQTT" ]; then
+	echo
+    echo "MQTT is not installed."
+	echo "Installing MQTT ..."
+	sudo npm install mqtt -g
+	mqtt version
+else 
+    echo "MQTT is already installed"
+	mqtt version
+fi
 
 # Create paths
 sudo mkdir -p /srv/nodejs/senti
@@ -55,12 +71,13 @@ echo
 
 echo Installing modules and/or upgrades
 echo
-cd senti-mqtt-client
+cd /srv/nodejs/senti/senti-mqtt-client
 sudo npm install
+echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
-cd ../senti-watchman
+cd /srv/nodejs/senti/senti-watchman
 sudo npm install
-
+echo
 echo
 echo Starting senti-mqtt-client service ...
 echo
