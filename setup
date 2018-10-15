@@ -9,11 +9,6 @@ sudo -i
 
 echo Setting up Senti-MQTT-Client
 
-# Create temporary tools work directory
-sudo mkdir -p /usr/local/tools
-cd /usr/local/tools
-pwd
-
 # Install all needed helper software
 # Check if needed software exist
 echo
@@ -64,19 +59,19 @@ sudo mkdir -p /srv/nodejs/senti
 
 echo 
 echo Fetching latest versions of Senti software from GitHub
-cd /srv/nodejs/senti
+cd /srv/nodejs/senti > /dev/null
 sudo git -C senti-mqtt-client pull || git clone https://github.com/senti-platform/senti-mqtt-client.git > /dev/null
 sudo git -C senti-watchman pull || git clone https://github.com/senti-platform/senti-watchman.git > /dev/null
 echo 
 
 echo Installing modules and/or upgrades
 echo
-cd /srv/nodejs/senti/senti-mqtt-client
-sudo npm install > /dev/null
+cd /srv/nodejs/senti/senti-mqtt-client > /dev/null
+sudo npm install
 echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
-cd /srv/nodejs/senti/senti-watchman
-sudo npm install > /dev/null
+cd /srv/nodejs/senti/senti-watchman > /dev/null
+sudo npm install
 echo
 echo
 echo Starting senti-mqtt-client service ...
