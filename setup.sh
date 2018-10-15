@@ -1,15 +1,6 @@
 #!/bin/bash
 # wget https://github.com/senti-platform/senti-client-setup/blob/master/setup.sh && bash setup.sh
 
-# Check if needed software exist
-# Create paths
-# Download assets (wget + unpack)
-# Copy to destinations
-# git pull
-# npm install (npm --prefix ../senti-mqtt-client ../senti-mqtt-client)
-# Add systemd entries
-# Start systemd services
-
 clear
 
 # Login
@@ -72,4 +63,4 @@ sudo npm install
 echo
 echo Starting senti-mqtt-client service ...
 echo
-bash run.sh
+
