@@ -75,5 +75,6 @@ echo Installing senti-watchman  ...
 cd /srv/nodejs/senti/senti-watchman > /dev/null
 echo
 sudo npm install
+echo "alias senti='cd /srv/nodejs/senti/'" >> ~/.bash_aliases && source ~/.bashrc
 echo Starting senti-mqtt-client service ...
 echo
