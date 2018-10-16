@@ -44,7 +44,7 @@ else
 	echo
 	echo node version && node -v
 	echo npm version && npm -v
-	echo
+	echo	
 fi
 
 sudo npm install mqtt@latest -g
@@ -64,19 +64,16 @@ sudo git -C senti-watchman pull || git clone https://github.com/senti-platform/s
 echo 
 
 echo Installing modules and/or upgrades
-cd /srv/nodejs/senti/senti-mqtt-client > /dev/null
 echo
 echo Installing senti-mqtt-client  ...
+cd /srv/nodejs/senti/senti-mqtt-client > /dev/null
 echo
 sudo npm install
-echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
-cd /srv/nodejs/senti/senti-watchman > /dev/null
 echo
 echo Installing senti-watchman  ...
+cd /srv/nodejs/senti/senti-watchman > /dev/null
 echo
 sudo npm install
-echo
 echo Starting senti-mqtt-client service ...
 echo
-
