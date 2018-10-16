@@ -3,9 +3,8 @@
 # sudo curl -sL https://raw.githubusercontent.com/senti-platform/senti-client-setup/master/setup | sudo -E bash
 
 clear
-
-# Login
 sudo -i
+clear
 
 echo Setting up Senti-MQTT-Client
 
@@ -13,6 +12,7 @@ echo Setting up Senti-MQTT-Client
 # Check if needed software exist
 echo
 echo Checking if needed software is installed ... 
+echo
 
 GIT=/usr/bin/git
 if [ ! -e "$GIT" ]; then
@@ -64,23 +64,19 @@ sudo git -C senti-watchman pull || git clone https://github.com/senti-platform/s
 echo 
 
 echo Installing modules and/or upgrades
-echo
 cd /srv/nodejs/senti/senti-mqtt-client > /dev/null
 echo
 echo Installing senti-mqtt-client  ...
+echo
 sudo npm install
 echo
 sudo mkdir -p /srv/nodejs/senti/senti-mqtt-client/logs
 cd /srv/nodejs/senti/senti-watchman > /dev/null
 echo
 echo Installing senti-watchman  ...
+echo
 sudo npm install
-echo
-echo
-echo
-echo
-echo
 echo
 echo Starting senti-mqtt-client service ...
 echo
-echo
+
