@@ -6,6 +6,9 @@ clear
 sudo -i
 clear
 
+serverdir=/srv/nodejs/senti/senti-watchman
+clientdir=/srv/nodejs/senti/senti-mqtt-client
+
 echo Setting up Senti-MQTT-Client
 
 # Install all needed helper software
@@ -76,5 +79,9 @@ cd /srv/nodejs/senti/senti-watchman > /dev/null
 echo
 sudo npm install
 echo "alias senti='cd /srv/nodejs/senti/'" >> ~/.bash_aliases && source ~/.bashrc
+
+cp $serverdir/senti-watchman.service /etc/systemd/system
+cp $clientdir/senti-mqtt-service.service /etc/systemd/system
+
 echo Starting senti-mqtt-client service ...
 echo
