@@ -85,8 +85,10 @@ cp $clientdir/senti-mqtt-service.service /etc/systemd/system
 
 echo Starting Senti Watchman service ...
 sudo systemctl start senti-watchman.service
+systemctl status senti-watchman.service
 echo
 
 echo Starting Senti MQTT Client service ...
 sudo systemctl start senti-mqtt-service.service
+systemctl status senti-mqtt-client.service
 echo
