@@ -83,6 +83,8 @@ echo "alias senti='cd /srv/nodejs/senti/'" >> ~/.bash_aliases && source ~/.bashr
 cp $serverdir/senti-watchman.service /etc/systemd/system
 cp $clientdir/senti-mqtt-service.service /etc/systemd/system
 
+# ENABLE BOTH SERVICES
+
 echo Starting Senti Watchman service ...
 sudo systemctl start senti-watchman.service
 systemctl status senti-watchman.service
