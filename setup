@@ -38,7 +38,7 @@ if [ ! -e "$NODE" ]; then
     echo "nodejs is not installed."
 	echo "Installing nodejs & npm ..."
 	echo
-	sudo curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash && sudo apt-get install -y nodejs && sudo apt-get install build-essential > /dev/null
+	sudo curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash && sudo apt-get install -y nodejs && sudo apt-get install build-essential > /dev/null
 	echo
 	echo node version && node -v
 	echo npm version && npm -v
